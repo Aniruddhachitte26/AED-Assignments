@@ -26,7 +26,7 @@ public class ListJPanel extends javax.swing.JPanel {
         userProcessContainer = container;
         personDirectory = directory;
         
-//        populateTable();
+        populateTable();
     }
 
     /**
@@ -50,7 +50,15 @@ public class ListJPanel extends javax.swing.JPanel {
             new String [] {
                 "First Name", "Last Name", "H - City", "H - Zip Code", "W - City", "W - Zip Code"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblListPanel.setViewportView(tblList);
 
         txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -67,30 +75,30 @@ public class ListJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(158, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(tblListPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(137, 137, 137))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(353, 353, 353))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(tblListPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(378, 378, 378)
+                        .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(68, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(350, 350, 350))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(txtTitle)
-                .addGap(40, 40, 40)
-                .addComponent(tblListPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
+                .addComponent(txtTitle)
+                .addGap(18, 18, 18)
+                .addComponent(tblListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addComponent(btnDelete)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -122,6 +130,26 @@ public class ListJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane tblListPanel;
     private javax.swing.JLabel txtTitle;
     // End of variables declaration//GEN-END:variables
+
+    public void populateTable(){
+    
+        DefaultTableModel model = (DefaultTableModel) tblList.getModel();
+        model.setRowCount(0);
+        
+        for (Person p: personDirectory.getPersons()){
+            
+            Object[] row = new Object[6];
+            row[0] = p;
+            row[1] = p.getLastName();
+            row[2] = p.getHcity();
+            row[3] = String.valueOf(p.getHzipCode());
+            row[4] = p.getWcity();
+            row[5] = String.valueOf(p.getWzipCode());
+
+            
+            model.addRow(row);
+        }
+    }
 
 
 }

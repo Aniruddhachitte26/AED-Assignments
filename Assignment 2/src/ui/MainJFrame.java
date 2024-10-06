@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
+
 import model.Person;
 import ui.PersonManager.CreatePersonJPanel;
 import java.awt.CardLayout;
@@ -14,7 +15,9 @@ import ui.PersonManager.ListJPanel;
  * @author Aniruddha
  */
 public class MainJFrame extends javax.swing.JFrame {
+
     private PersonDirectory personDirectory;
+
     /**
      * Creates new form MainJFrame
      */
@@ -131,26 +134,25 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnAddPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersonActionPerformed
 
-
-        CreatePersonJPanel panel = new CreatePersonJPanel(userProcessContainer,personDirectory);
+        CreatePersonJPanel panel = new CreatePersonJPanel(userProcessContainer, personDirectory);
         userProcessContainer.add("CreatePersonJPanel", panel);
-        
+
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
-        
+
+
     }//GEN-LAST:event_btnAddPersonActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnListPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListPersonActionPerformed
         // TODO add your handling code here:
-        ListJPanel panel = new ListJPanel(userProcessContainer,personDirectory);
+        ListJPanel panel = new ListJPanel(userProcessContainer, personDirectory);
         userProcessContainer.add("ListJPanel", panel);
-        
+
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnListPersonActionPerformed
@@ -210,12 +212,93 @@ public class MainJFrame extends javax.swing.JFrame {
         personA.setHcity("Boston");
         personA.setHstate("MA");
         personA.setHzipCode(20218);
-        personA.setHphoneNumber(617588547);
+        personA.setHphoneNumber(617 - 588 - 5475);
         personA.setWstreet("456 Corporate Ave");
         personA.setWunitNumber(2);
         personA.setWcity("Cambridge");
         personA.setWstate("MA");
         personA.setWzipCode(20139);
-        personA.setWphoneNumber(617555567);
+        personA.setWphoneNumber(617 - 555 - 5675);
+        personA.setMonthlysalary(9000.25);
+
+        Person personB = personDirectory.addPerson();
+        personB.setFirstName("Jane");
+        personB.setLastName("Smith");
+        personB.setSsn(987654321);
+        personB.setAge(28);
+        personB.setHstreet("789 Elm St");
+        personB.setHunitNumber(5);
+        personB.setHcity("New York");
+        personB.setHstate("NY");
+        personB.setHzipCode(10001);
+        personB.setHphoneNumber(212 - 555 - 1234);
+        personB.setWstreet("300 Wall St");
+        personB.setWunitNumber(4);
+        personB.setWcity("New York");
+        personB.setWstate("NY");
+        personB.setWzipCode(10005);
+        personB.setWphoneNumber(212 - 555 - 5675);
+        personB.setMonthlysalary(6523.10);
+
+        // Third person
+        Person personC = personDirectory.addPerson();
+        personC.setFirstName("Michael");
+        personC.setLastName("Johnson");
+        personC.setSsn(555666777);
+        personC.setAge(42);
+        personC.setHstreet("321 Oak Ave");
+        personC.setHunitNumber(1);
+        personC.setHcity("Los Angeles");
+        personC.setHstate("CA");
+        personC.setHzipCode(90001);
+        personC.setHphoneNumber(310 - 555 - 7890);
+        personC.setWstreet("900 Hollywood Blvd");
+        personC.setWunitNumber(10);
+        personC.setWcity("Los Angeles");
+        personC.setWstate("CA");
+        personC.setWzipCode(90028);
+        personC.setWphoneNumber(323 - 555 - 9876);
+        personC.setMonthlysalary(8023.29);
+
+        // Fourth person
+        Person personD = personDirectory.addPerson();
+        personD.setFirstName("Emily");
+        personD.setLastName("Davis");
+        personD.setSsn(112233445);
+        personD.setAge(30);
+        personD.setHstreet("456 Maple St");
+        personD.setHunitNumber(7);
+        personD.setHcity("Chicago");
+        personD.setHstate("IL");
+        personD.setHzipCode(60601);
+        personD.setHphoneNumber(312 - 555 - 2460);
+        personD.setWstreet("500 Michigan Ave");
+        personD.setWunitNumber(12);
+        personD.setWcity("Chicago");
+        personD.setWstate("IL");
+        personD.setWzipCode(60611);
+        personD.setWphoneNumber(312 - 555 - 1351);
+        personD.setMonthlysalary(7500.86);
+
+        // Fifth person
+        Person personE = personDirectory.addPerson();
+        personE.setFirstName("David");
+        personE.setLastName("Brown");
+        personE.setSsn(778899001);
+        personE.setAge(50);
+        personE.setHstreet("222 Pine St");
+        personE.setHunitNumber(3);
+        personE.setHcity("Houston");
+        personE.setHstate("TX");
+        personE.setHzipCode(77002);
+        personE.setHphoneNumber(713555874);
+        personE.setWstreet("100 Main St");
+        personE.setWunitNumber(6);
+        personE.setWcity("Houston");
+        personE.setWstate("TX");
+        personE.setWzipCode(77005);
+        personE.setWphoneNumber(713 - 555 - 1236);
+        personE.setMonthlysalary(5666.66);
     }
+
 }

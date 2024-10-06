@@ -19,30 +19,23 @@ public class Person {
     private String hstate;
     private int hzipCode;
     private int hunitNumber;
-    private int hphoneNumber;
+    private long hphoneNumber;
     private String wstreet;
     private String wcity;
     private String wstate;
     private int wzipCode;
     private int wunitNumber;
-    private int wphoneNumber;
+    private long wphoneNumber;
+    private double monthlysalary;
 
-//    public Person(String firstName, String lastName, String hstreet, String hcity, String hstate, int hzipCode, int hunitNumber, int hphoneNumber, String wstreet, String wcity, String wstate, int wzipCode, int wunitNumber, int wphoneNumber) {
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.hstreet = hstreet;
-//        this.hcity = hcity;
-//        this.hstate = hstate;
-//        this.hzipCode = hzipCode;
-//        this.hunitNumber = hunitNumber;
-//        this.hphoneNumber = hphoneNumber;
-//        this.wstreet = wstreet;
-//        this.wcity = wcity;
-//        this.wstate = wstate;
-//        this.wzipCode = wzipCode;
-//        this.wunitNumber = wunitNumber;
-//        this.wphoneNumber = wphoneNumber;
-//    }
+    public double getMonthlysalary() {
+        return monthlysalary;
+    }
+
+    public void setMonthlysalary(double monthlysalary) {
+        this.monthlysalary = monthlysalary;
+    }
+
     public int getSsn() {
         return ssn;
     }
@@ -99,7 +92,7 @@ public class Person {
         this.hunitNumber = hunitNumber;
     }
 
-    public int getHphoneNumber() {
+    public long getHphoneNumber() {
         return hphoneNumber;
     }
 
@@ -147,7 +140,7 @@ public class Person {
         this.wunitNumber = wunitNumber;
     }
 
-    public int getWphoneNumber() {
+    public long getWphoneNumber() {
         return wphoneNumber;
     }
 
