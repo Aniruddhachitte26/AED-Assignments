@@ -12,6 +12,8 @@ public class Person {
 
     private String firstName;
     private String lastName;
+    private int ssn;
+    private int age;
     private String hstreet;
     private String hcity;
     private String hstate;
@@ -40,8 +42,22 @@ public class Person {
 //        this.wzipCode = wzipCode;
 //        this.wunitNumber = wunitNumber;
 //        this.wphoneNumber = wphoneNumber;
-
 //    }
+    public int getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(int ssn) {
+        this.ssn = ssn;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public String getHstreet() {
         return hstreet;
@@ -154,8 +170,9 @@ public class Person {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return firstName;
     }
 

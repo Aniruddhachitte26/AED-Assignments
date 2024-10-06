@@ -7,6 +7,7 @@ import model.Person;
 import ui.PersonManager.CreatePersonJPanel;
 import java.awt.CardLayout;
 import model.PersonDirectory;
+import ui.PersonManager.ListJPanel;
 
 /**
  *
@@ -20,7 +21,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         this.personDirectory = new PersonDirectory();
-//        generateDemoData();
+        generateDemoData();
     }
 
     /**
@@ -38,6 +39,7 @@ public class MainJFrame extends javax.swing.JFrame {
         btnListPerson = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         userProcessContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,6 +54,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnListPerson.setText("List Person");
+        btnListPerson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListPersonActionPerformed(evt);
+            }
+        });
 
         txtSearch.setText("Type name or street address");
 
@@ -61,6 +68,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 btnSearchActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel1.setText("Person Profile");
 
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
@@ -73,8 +83,10 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnAddPerson)
-                        .addComponent(btnListPerson)))
-                .addGap(0, 0, 0))
+                        .addComponent(btnListPerson))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAddPerson, btnListPerson, btnSearch, txtSearch});
@@ -82,7 +94,9 @@ public class MainJFrame extends javax.swing.JFrame {
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
+                .addGap(67, 67, 67)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addComponent(btnAddPerson)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnListPerson)
@@ -90,7 +104,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSearch)
-                .addContainerGap(372, Short.MAX_VALUE))
+                .addContainerGap(369, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(controlPanel);
@@ -132,6 +146,15 @@ public class MainJFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSearchActionPerformed
 
+    private void btnListPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListPersonActionPerformed
+        // TODO add your handling code here:
+        ListJPanel panel = new ListJPanel(userProcessContainer,personDirectory);
+        userProcessContainer.add("ListJPanel", panel);
+        
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnListPersonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -170,12 +193,29 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnListPerson;
     private javax.swing.JButton btnSearch;
     private javax.swing.JPanel controlPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JPanel userProcessContainer;
     // End of variables declaration//GEN-END:variables
 
-//    private void generateDemoData() {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
+    private void generateDemoData() {
+        Person personA = personDirectory.addPerson();
+        personA.setFirstName("John");
+        personA.setLastName("Doe");
+        personA.setSsn(123456789);
+        personA.setAge(35);
+        personA.setHstreet("123 Main St");
+        personA.setHunitNumber(2);
+        personA.setHcity("Boston");
+        personA.setHstate("MA");
+        personA.setHzipCode(20218);
+        personA.setHphoneNumber(617588547);
+        personA.setWstreet("456 Corporate Ave");
+        personA.setWunitNumber(2);
+        personA.setWcity("Cambridge");
+        personA.setWstate("MA");
+        personA.setWzipCode(20139);
+        personA.setWphoneNumber(617555567);
+    }
 }
