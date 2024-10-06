@@ -7,8 +7,10 @@ package ui;
 import model.Person;
 import ui.PersonManager.CreatePersonJPanel;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import model.PersonDirectory;
 import ui.PersonManager.ListJPanel;
+import ui.PersonManager.UpdateJPanel;
 
 /**
  *
@@ -40,7 +42,7 @@ public class MainJFrame extends javax.swing.JFrame {
         controlPanel = new javax.swing.JPanel();
         btnAddPerson = new javax.swing.JButton();
         btnListPerson = new javax.swing.JButton();
-        txtSearch = new javax.swing.JTextField();
+        txtSearchBox = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         userProcessContainer = new javax.swing.JPanel();
@@ -63,8 +65,6 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        txtSearch.setText("Type name or street address");
-
         btnSearch.setText("Search for Person");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,17 +82,20 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSearch)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnAddPerson)
-                        .addComponent(btnListPerson))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSearch)
+                            .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnAddPerson)
+                                .addComponent(btnListPerson))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAddPerson, btnListPerson, btnSearch, txtSearch});
+        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAddPerson, btnListPerson, btnSearch, txtSearchBox});
 
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +107,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnListPerson)
                 .addGap(70, 70, 70)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSearch)
                 .addContainerGap(369, Short.MAX_VALUE))
@@ -145,6 +148,44 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+//        if (!txtSearchBox.getText().isBlank()){
+//            String firstname = txtSearchBox.getText();
+//            Person foundPerson= personDirectory.searchPersonByName(firstname);
+//            
+//            if (foundPerson!=null){
+//                UpdateJPanel panel = new UpdateJPanel(userProcessContainer,personDirectory,foundPerson);
+//                userProcessContainer.add("UpdateJPanel", panel);
+//                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//                layout.next(userProcessContainer);
+//            }else{
+//                JOptionPane.showMessageDialog(null, "Account not found.", "Warning", JOptionPane.WARNING_MESSAGE);
+//            }
+//        }else{
+//            JOptionPane.showMessageDialog(null, "Please type the account number to view", "Warning", JOptionPane.WARNING_MESSAGE);
+//        }
+        if (!txtSearchBox.getText().isBlank()) {
+        String searchInput = txtSearchBox.getText();
+        
+        // Assuming that the input could be either first name, last name, or street name
+        String firstName = searchInput;  // Assuming this is the first name for now
+        String lastName = searchInput;   // Assuming it could be last name
+        String streetName = searchInput; // Assuming it could be street name
+        
+        Person foundPerson = personDirectory.searchPersonByName(firstName, lastName, streetName);
+        
+        if (foundPerson != null) {
+            UpdateJPanel panel = new UpdateJPanel(userProcessContainer, personDirectory, foundPerson);
+            userProcessContainer.add("UpdateJPanel", panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        } else {
+            JOptionPane.showMessageDialog(null, "Person not found.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Please type a name or address to search", "Warning", JOptionPane.WARNING_MESSAGE);
+    }
+        
+        
 
     }//GEN-LAST:event_btnSearchActionPerformed
 
@@ -197,7 +238,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel controlPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSplitPane splitPane;
-    private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtSearchBox;
     private javax.swing.JPanel userProcessContainer;
     // End of variables declaration//GEN-END:variables
 

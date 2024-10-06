@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author Aniruddha
  */
 public class PersonDirectory {
-    
+
     private ArrayList<Person> persons;
 
     public PersonDirectory() {
@@ -40,24 +40,24 @@ public class PersonDirectory {
         persons.remove(person);
     }
 
-    // Search for a person by their SSN (or other unique identifier)
-//    public Person searchPersonBySSN(String ssn) {
+//    public Person searchPersonByName(String firstName) {
 //        for (Person p : persons) {
-//            if (p.getSsn().equals(ssn)) {
+//            if (p.getFirstName().equals(firstName) ) {
 //                return p;
 //            }
 //        }
 //        return null;
 //    }
+    public Person searchPersonByName(String firstName, String lastName, String hstreet) {
+    for (Person p : persons) {
+        boolean firstNameMatches = (firstName != null && !firstName.isBlank() && p.getFirstName().equalsIgnoreCase(firstName));
+        boolean lastNameMatches = (lastName != null && !lastName.isBlank() && p.getLastName().equalsIgnoreCase(lastName));
+        boolean hstreetMatches = (hstreet != null && !hstreet.isBlank() && p.getHstreet().equalsIgnoreCase(hstreet));
 
-    // Search for a person by their full name (optional, depending on use case)
-    public Person searchPersonByName(String firstName, String lastName) {
-        for (Person p : persons) {
-            if (p.getFirstName().equals(firstName) && p.getLastName().equals(lastName)) {
-                return p;
-            }
+        if (firstNameMatches || lastNameMatches || hstreetMatches) {
+            return p;
         }
-        return null;
     }
+    return null;
 }
-
+}

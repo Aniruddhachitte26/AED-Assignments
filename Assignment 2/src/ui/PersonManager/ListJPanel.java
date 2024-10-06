@@ -42,6 +42,8 @@ public class ListJPanel extends javax.swing.JPanel {
         tblList = new javax.swing.JTable();
         txtTitle = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         tblList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -71,24 +73,35 @@ public class ListJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("H - Home Address");
+
+        jLabel2.setText("W - Work Address");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(tblListPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(378, 378, 378)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(174, 174, 174)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(71, 71, 71)
+                            .addComponent(tblListPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(378, 378, 378)
+                            .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(68, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(350, 350, 350))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -97,35 +110,42 @@ public class ListJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(tblListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addGap(36, 36, 36)
-                .addComponent(btnDelete)
-                .addGap(41, 41, 41))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDelete)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)))
+                .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-//        int selectedRow = tblList.getSelectedRow();
-//        
-//        if (selectedRow>=0){
-//        
-//            int dialogButton = JOptionPane.YES_NO_OPTION;
-//            int dialogResult = JOptionPane.showConfirmDialog(null,"Are you sure you want to delete the selected account", "Warning", JOptionPane.WARNING_MESSAGE);
-//            if (dialogResult == JOptionPane.YES_OPTION){
-//            
-//                People selectedAccount = (Person) tblList.getValueAt(selectedRow, 0);
-//                personDirectory.deletePerson(selectedPerson);
-//                populateTable();
-//            }
-//            else{
-//                JOptionPane.showMessageDialog(null, "Please select an account from the list", "Warning", JOptionPane.WARNING_MESSAGE);
-//                
-//            }
-//        }
+        int selectedRow = tblList.getSelectedRow();
+        
+        if (selectedRow>=0){
+        
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null,"Are you sure you want to delete the selected Person", "Warning", JOptionPane.WARNING_MESSAGE);
+            if (dialogResult == JOptionPane.YES_OPTION){
+            
+                Person selectedAccount = (Person) tblList.getValueAt(selectedRow, 0);
+                personDirectory.deletePerson(selectedAccount);
+                populateTable();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Please select an Person from the list", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            }
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTable tblList;
     private javax.swing.JScrollPane tblListPanel;
     private javax.swing.JLabel txtTitle;
