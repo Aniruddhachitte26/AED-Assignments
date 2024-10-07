@@ -148,21 +148,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-//        if (!txtSearchBox.getText().isBlank()){
-//            String firstname = txtSearchBox.getText();
-//            Person foundPerson= personDirectory.searchPersonByName(firstname);
-//            
-//            if (foundPerson!=null){
-//                UpdateJPanel panel = new UpdateJPanel(userProcessContainer,personDirectory,foundPerson);
-//                userProcessContainer.add("UpdateJPanel", panel);
-//                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//                layout.next(userProcessContainer);
-//            }else{
-//                JOptionPane.showMessageDialog(null, "Account not found.", "Warning", JOptionPane.WARNING_MESSAGE);
-//            }
-//        }else{
-//            JOptionPane.showMessageDialog(null, "Please type the account number to view", "Warning", JOptionPane.WARNING_MESSAGE);
-//        }
+
         if (!txtSearchBox.getText().isBlank()) {
         String searchInput = txtSearchBox.getText();
         
@@ -253,13 +239,13 @@ public class MainJFrame extends javax.swing.JFrame {
         personA.setHcity("Boston");
         personA.setHstate("MA");
         personA.setHzipCode(20218);
-        personA.setHphoneNumber(617 - 588 - 5475);
+        personA.setHphoneNumber(617588547);
         personA.setWstreet("456 Corporate Ave");
         personA.setWunitNumber(2);
         personA.setWcity("Cambridge");
         personA.setWstate("MA");
         personA.setWzipCode(20139);
-        personA.setWphoneNumber(617 - 555 - 5675);
+        personA.setWphoneNumber(617555567);
         personA.setMonthlysalary(9000.25);
 
         Person personB = personDirectory.addPerson();
@@ -272,13 +258,13 @@ public class MainJFrame extends javax.swing.JFrame {
         personB.setHcity("New York");
         personB.setHstate("NY");
         personB.setHzipCode(10001);
-        personB.setHphoneNumber(212 - 555 - 1234);
+        personB.setHphoneNumber(2125551234);
         personB.setWstreet("300 Wall St");
         personB.setWunitNumber(4);
         personB.setWcity("New York");
         personB.setWstate("NY");
         personB.setWzipCode(10005);
-        personB.setWphoneNumber(212 - 555 - 5675);
+        personB.setWphoneNumber(2125555675);
         personB.setMonthlysalary(6523.10);
 
         // Third person
@@ -298,7 +284,7 @@ public class MainJFrame extends javax.swing.JFrame {
         personC.setWcity("Los Angeles");
         personC.setWstate("CA");
         personC.setWzipCode(90028);
-        personC.setWphoneNumber(323 - 555 - 9876);
+        personC.setWphoneNumber(323555987);
         personC.setMonthlysalary(8023.29);
 
         // Fourth person
@@ -318,7 +304,7 @@ public class MainJFrame extends javax.swing.JFrame {
         personD.setWcity("Chicago");
         personD.setWstate("IL");
         personD.setWzipCode(60611);
-        personD.setWphoneNumber(312 - 555 - 1351);
+        personD.setWphoneNumber(312555135);
         personD.setMonthlysalary(7500.86);
 
         // Fifth person
@@ -338,7 +324,7 @@ public class MainJFrame extends javax.swing.JFrame {
         personE.setWcity("Houston");
         personE.setWstate("TX");
         personE.setWzipCode(77005);
-        personE.setWphoneNumber(713 - 555 - 1236);
+        personE.setWphoneNumber(713555123);
         personE.setMonthlysalary(5666.66);
     }
 

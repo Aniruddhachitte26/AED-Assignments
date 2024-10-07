@@ -17,6 +17,8 @@ public class UpdateJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private PersonDirectory personDirectory;
     private Person foundPerson;
+    
+
 
     /**
      * Creates new form UpdateJPanel
@@ -27,8 +29,8 @@ public class UpdateJPanel extends javax.swing.JPanel {
         personDirectory = directory;
         this.foundPerson = foundPerson;
         
-//        refreshTextFields();
-//        setViewmode();
+        refreshTextFields();
+        setViewmode();
     }
 
     /**
@@ -79,6 +81,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
         txtFirstName = new javax.swing.JTextField();
         lblAge = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         lblMonthlySalary.setText("Monthly Salary");
 
@@ -287,36 +290,48 @@ public class UpdateJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAge, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtSSN)
-                            .addComponent(txtLastName)
-                            .addComponent(lblLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblAge, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(50, 50, 50)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtSSN)
+                                    .addComponent(txtLastName)
+                                    .addComponent(lblLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDesktopPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMonthlySalary, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMonthlySalary, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMonthlySalary, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(325, 325, 325))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,7 +366,9 @@ public class UpdateJPanel extends javax.swing.JPanel {
                     .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDesktopPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
-                .addComponent(btnUpdate)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnSave))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -362,12 +379,73 @@ public class UpdateJPanel extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-//        setEditmode();
+        setEditmode();
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        String firstName = txtFirstName.getText();
+        String lastName = txtLastName.getText();
+        String hstreet = txtHStreetAddress1.getText();
+        String hcity = txtHCity1.getText();
+        String hstate = txtHState1.getText();
+        String wstreet = txtWStreetAddress.getText();
+        String wcity = txtWCity.getText();
+        String wstate = txtWState.getText();
+        double monthlysalary;
+        
+        int hzipCode, hunitNumber, hphoneNumber, wzipCode, wunitNumber, ssn, wphoneNumber,age;
+        
+        if (firstName.isBlank()|| lastName.isBlank()|| hstreet.isBlank()|| hcity.isBlank()||hstate.isBlank()||wstreet.isBlank()||wcity.isBlank()|| wstate.isBlank()){
+            JOptionPane.showMessageDialog(this, "All fields are mandatory", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try{
+            ssn= Integer.parseInt(txtSSN.getText());
+            age = Integer.parseInt(txtAge.getText());
+            hzipCode = Integer.parseInt(txtHZipCode1.getText());
+            hunitNumber = Integer.parseInt(txtHUnitNumber1.getText());
+            hphoneNumber = (int) Long.parseLong(txtHPhoneNumber1.getText());
+            monthlysalary = Double.parseDouble(txtMonthlySalary.getText());
+          
+        
+            wzipCode = Integer.parseInt(txtWZipCode.getText());
+            wunitNumber = Integer.parseInt(txtWUnitNumber.getText());
+            wphoneNumber = (int) Long.parseLong(txtWPhoneNumber.getText());            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please check the message input", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }        
+        
+        
+        foundPerson.setFirstName(firstName);
+        foundPerson.setLastName(lastName);
+        foundPerson.setSsn(ssn);
+        foundPerson.setAge(age);
+        foundPerson.setHstreet(hstreet);
+        foundPerson.setHunitNumber(hunitNumber);
+        foundPerson.setHcity(hcity);
+        foundPerson.setHstate(hstate);
+        foundPerson.setHzipCode(hzipCode);
+        foundPerson.setHphoneNumber(hphoneNumber);
+        foundPerson.setWstreet(wstreet);
+        foundPerson.setWunitNumber(wunitNumber);
+        foundPerson.setWcity(wcity);
+        foundPerson.setWstate(wstate);
+        foundPerson.setWzipCode(wzipCode);
+        foundPerson.setWphoneNumber(wphoneNumber);
+        foundPerson.setMonthlysalary(monthlysalary);
+        
+        JOptionPane.showMessageDialog(null, "Acccount successfully updated.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        
+        setViewmode();       
+    }//GEN-LAST:event_btnSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JDesktopPane jDesktopPane3;
@@ -408,4 +486,101 @@ public class UpdateJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtWUnitNumber;
     private javax.swing.JTextField txtWZipCode;
     // End of variables declaration//GEN-END:variables
+    private void refreshTextFields() {
+        txtFirstName.setText(foundPerson.getFirstName());
+        txtLastName.setText(foundPerson.getLastName());
+        txtHStreetAddress1.setText(foundPerson.getHstreet());
+        txtHCity1.setText(foundPerson.getHcity());
+        txtWCity.setText(foundPerson.getWcity());
+        txtHState1.setText(foundPerson.getHstate());
+        txtWStreetAddress.setText(foundPerson.getWstreet());
+        txtWState.setText(foundPerson.getWstate());
+
+        int SSN = foundPerson.getSsn();
+        txtSSN.setText(Integer.toString(SSN));
+        
+        int Age = foundPerson.getAge();
+        txtAge.setText(Integer.toString(Age)); 
+        
+        int HUnitNumber1 = foundPerson.getHunitNumber();
+        txtHUnitNumber1.setText(Integer.toString(HUnitNumber1));
+        
+        int HZipCode1 = foundPerson.getHzipCode();
+        txtHZipCode1.setText(Integer.toString(HZipCode1));  
+ 
+        int WUnitNumber = foundPerson.getWunitNumber();
+        txtWUnitNumber.setText(Integer.toString(WUnitNumber));
+        
+        int WZipCode = foundPerson.getWzipCode();
+        txtWZipCode.setText(Integer.toString(WZipCode));   
+        
+        long WPhoneNumber = foundPerson.getWphoneNumber();
+        txtWPhoneNumber.setText(Long.toString(WPhoneNumber));
+        
+        long HPhoneNumber1 = foundPerson.getHphoneNumber();
+        txtHPhoneNumber1.setText(Long.toString(HPhoneNumber1));
+        
+        double MonthlySalary = foundPerson.getMonthlysalary();
+        txtMonthlySalary.setText(Double.toString(MonthlySalary));
+        
+        
+    }
+
+    private void setViewmode() {
+        
+        txtFirstName.setEnabled(false);
+        txtLastName.setEnabled(false);
+        txtSSN.setEnabled(false);
+        txtAge.setEnabled(false);
+        txtHStreetAddress1.setEnabled(false);
+        txtHUnitNumber1.setEnabled(false);
+        txtHCity1.setEnabled(false);
+        txtHState1.setEnabled(false);
+        txtHZipCode1.setEnabled(false);
+        txtHPhoneNumber1.setEnabled(false);
+        txtWStreetAddress.setEnabled(false);
+        txtWUnitNumber.setEnabled(false);
+        txtWCity.setEnabled(false);
+        txtWState.setEnabled(false);
+        txtWZipCode.setEnabled(false);
+        txtWPhoneNumber.setEnabled(false);
+        txtMonthlySalary.setEnabled(false);
+
+        
+        btnSave.setEnabled(false);
+        btnUpdate.setEnabled(true);
+        
+    }
+    
+    private void setEditmode(){
+    
+        
+        txtFirstName.setEnabled(true);
+        txtLastName.setEnabled(true);
+        txtSSN.setEnabled(true);
+        txtAge.setEnabled(true);
+        txtHStreetAddress1.setEnabled(true);
+        txtHUnitNumber1.setEnabled(true);
+        txtHCity1.setEnabled(true);
+        txtHState1.setEnabled(true);
+        txtHZipCode1.setEnabled(true);
+        txtHPhoneNumber1.setEnabled(true);
+        txtWStreetAddress.setEnabled(true);
+        txtWUnitNumber.setEnabled(true);
+        txtWCity.setEnabled(true);
+        txtWState.setEnabled(true);
+        txtWZipCode.setEnabled(true);
+        txtWPhoneNumber.setEnabled(true);
+        txtMonthlySalary.setEnabled(true);
+
+        
+        btnSave.setEnabled(true);
+        btnUpdate.setEnabled(false);
+    }
+
+
+
+
+
+
 }
