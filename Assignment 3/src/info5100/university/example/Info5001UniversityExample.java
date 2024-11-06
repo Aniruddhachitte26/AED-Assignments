@@ -90,6 +90,70 @@ public class Info5001UniversityExample {
         department.addElectiveCourse(course6);
         department.addElectiveCourse(course7);
 
+        CourseSchedule courseschedule = department.newCourseSchedule("Fall2024");
+        
+        CourseOffer courseoffer = courseschedule.newCourseOffer("info 5100");
+        if (courseoffer == null) return;
+        courseoffer.generatSeats(20);
+
+        CourseOffer courseoffer1 = courseschedule.newCourseOffer("info 6100");
+        if (courseoffer1 == null) return;
+        courseoffer1.generatSeats(20);
+
+        CourseOffer courseoffer2 = courseschedule.newCourseOffer("CSYE 6200");
+        if (courseoffer2 == null) return;
+        courseoffer2.generatSeats(20);
+
+        CourseOffer courseoffer3 = courseschedule.newCourseOffer("info 6150");
+        if (courseoffer3 == null) return;
+        courseoffer3.generatSeats(20);
+
+        CourseOffer courseoffer4 = courseschedule.newCourseOffer("info 7100");
+        if (courseoffer4 == null) return;
+        courseoffer4.generatSeats(20);
+
+        CourseOffer courseoffer5 = courseschedule.newCourseOffer("CS 4500");
+        if (courseoffer5 == null) return;
+        courseoffer5.generatSeats(20);
+
+        CourseOffer courseoffer6 = courseschedule.newCourseOffer("CS 5800");
+        if (courseoffer6 == null) return;
+        courseoffer6.generatSeats(20);
+
+        CourseOffer courseoffer7 = courseschedule.newCourseOffer("CS 5001");
+        if (courseoffer7 == null) return;
+        courseoffer7.generatSeats(20);
+        
+        FacultyDirectory fd = department.getFacultyDirectory();
+        
+        FacultyProfile f1 = fd.newFacultyProfile(p11);
+        FacultyProfile f2 = fd.newFacultyProfile(p12);
+        FacultyProfile f3 = fd.newFacultyProfile(p13);
+        FacultyProfile f4 = fd.newFacultyProfile(p14);
+        FacultyProfile f5 = fd.newFacultyProfile(p15);
+        FacultyProfile f6 = fd.newFacultyProfile(p16);
+        FacultyProfile f7 = fd.newFacultyProfile(p17);
+        FacultyProfile f8 = fd.newFacultyProfile(p18);
+
+        courseoffer.AssignAsTeacher(f1);
+        courseoffer1.AssignAsTeacher(f2);
+        courseoffer2.AssignAsTeacher(f3);
+        courseoffer3.AssignAsTeacher(f4);
+        courseoffer4.AssignAsTeacher(f5);
+        courseoffer5.AssignAsTeacher(f6);
+        courseoffer6.AssignAsTeacher(f7);
+        courseoffer7.AssignAsTeacher(f8);
+
+        CourseLoad courseload1 = student1.newCourseLoad("Fall2024");
+        CourseLoad courseload2 = student2.newCourseLoad("Fall2024");
+        CourseLoad courseload3 = student3.newCourseLoad("Fall2024");
+        CourseLoad courseload4 = student4.newCourseLoad("Fall2024");
+        CourseLoad courseload5 = student5.newCourseLoad("Fall2024");
+        CourseLoad courseload6 = student6.newCourseLoad("Fall2024");
+        CourseLoad courseload7 = student7.newCourseLoad("Fall2024");
+        CourseLoad courseload8 = student8.newCourseLoad("Fall2024");
+        CourseLoad courseload9 = student9.newCourseLoad("Fall2024");
+        CourseLoad courseload10 = student10.newCourseLoad("Fall2024");
 
 
 }
