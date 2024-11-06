@@ -69,7 +69,7 @@ public class Info5001UniversityExample {
 
 
         CourseCatalog coursecatalog = department.getCourseCatalog();
-        Course course = coursecatalog.newCourse("app eng", "info 5100", 1);
+        Course course = coursecatalog.newCourse("appl eng", "info 5100", 1);
         Course course1 = coursecatalog.newCourse("DMDW", "info 6100", 1);
         Course course2 = coursecatalog.newCourse("OOD", "CSYE 6200", 1);
         Course course3 = coursecatalog.newCourse("Data Science", "info 6150", 1);
@@ -87,7 +87,7 @@ public class Info5001UniversityExample {
         department.addElectiveCourse(course6);
         department.addElectiveCourse(course7);
 
-        CourseSchedule courseschedule = department.newCourseSchedule("Fall2024");
+        CourseSchedule courseschedule = department.newCourseSchedule("Sping 2025");
         
         CourseOffer courseoffer = courseschedule.newCourseOffer("info 5100");
         if (courseoffer == null) return;
@@ -197,17 +197,17 @@ public class Info5001UniversityExample {
 
         
         
-         System.out.println("---------------------------- Report For Fall 2024 Semester -----------------------------");
+         System.out.println("---------------------------- Report For Spring 2025 Semester -----------------------------");
         for(StudentProfile sp: sd.getStudentProfiles()){
             System.out.println("-------------------------------------------------------------------------------------");
             try{
                 System.out.println("Student Name : " + sp + "\n");
-                System.out.println("Course Number - Faculty - Score - Course Price\n");
+                System.out.println("Course Number --- Faculty ---Score --- Course Price\n");
                 for(SeatAssignment seatAssigned : sp.getCourseLoadBySemester("Fall2024").getSeatAssignments()){
                     CourseOffer co = seatAssigned.getCourseOffer();
-                    System.out.println(co.getCourseNumber() + " - "
-                            + co.getFacultyProfile() + " - "
-                            + Float.toString(seatAssigned.GetCourseStudentScore()) + " - $"
+                    System.out.println(co.getCourseNumber() + " --- "
+                            + co.getFacultyProfile() + " --- "
+                            + Float.toString(seatAssigned.GetCourseStudentScore()) + " --- $"
                             + co.getSubjectCourse().getCoursePrice() + ".00");
                 }
                 Float averageGpa = sp.getCourseLoadBySemester("Fall2024").getSemesterScore()/ sp.getCourseLoadBySemester("Fall2024").getSeatAssignments().size();
