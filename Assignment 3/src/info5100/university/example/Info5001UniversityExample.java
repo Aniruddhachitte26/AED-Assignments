@@ -19,10 +19,7 @@ import info5100.university.example.Persona.StudentDirectory;
 import info5100.university.example.CourseSchedule.SeatAssignment;
 import info5100.university.example.Persona.StudentProfile;
 
-/**
- *
- * @author kal bugrara
- */
+
 public class Info5001UniversityExample {
 
     /**
@@ -155,5 +152,78 @@ public class Info5001UniversityExample {
         CourseLoad courseload9 = student9.newCourseLoad("Fall2024");
         CourseLoad courseload10 = student10.newCourseLoad("Fall2024");
 
+        courseload1.newSeatAssignment(courseoffer1);
+        courseload1.newSeatAssignment(courseoffer2);
+
+        courseload2.newSeatAssignment(courseoffer2);
+        courseload2.newSeatAssignment(courseoffer1);
+
+        courseload3.newSeatAssignment(courseoffer3);
+        courseload3.newSeatAssignment(courseoffer1);
+
+        courseload4.newSeatAssignment(courseoffer1);
+        courseload4.newSeatAssignment(courseoffer2);
+
+        courseload5.newSeatAssignment(courseoffer2);
+        courseload5.newSeatAssignment(courseoffer1);
+
+        courseload6.newSeatAssignment(courseoffer1);
+        courseload6.newSeatAssignment(courseoffer2);
+
+        courseload7.newSeatAssignment(courseoffer1);
+        courseload7.newSeatAssignment(courseoffer6);
+
+        courseload8.newSeatAssignment(courseoffer2);
+        courseload8.newSeatAssignment(courseoffer1);
+
+        courseload9.newSeatAssignment(courseoffer3);
+        courseload9.newSeatAssignment(courseoffer1);
+
+        courseload10.newSeatAssignment(courseoffer1);
+        courseload10.newSeatAssignment(courseoffer3);
+
+        assignGrade(courseload1, courseoffer1.toString(), courseoffer2.toString(), "A", "A");
+        assignGrade(courseload2, courseoffer2.toString(), courseoffer1.toString(), "B", "A");
+        assignGrade(courseload3, courseoffer3.toString(), courseoffer1.toString(), "A", "B");
+        assignGrade(courseload4, courseoffer1.toString(), courseoffer2.toString(), "B", "B");
+        assignGrade(courseload5, courseoffer2.toString(), courseoffer1.toString(), "A", "A");
+        assignGrade(courseload6, courseoffer1.toString(), courseoffer2.toString(), "B", "A");
+        assignGrade(courseload7, courseoffer1.toString(), courseoffer6.toString(), "A", "B");
+        assignGrade(courseload8, courseoffer2.toString(), courseoffer1.toString(), "B", "A");
+        assignGrade(courseload9, courseoffer3.toString(), courseoffer1.toString(), "A", "B");
+        assignGrade(courseload10, courseoffer1.toString(), courseoffer3.toString(), "B", "A");
+
+
+
+        
+        
+         System.out.println("---------------------------- Report For Fall 2024 Semester -----------------------------");
+        for(StudentProfile sp: sd.getStudentProfiles()){
+            System.out.println("-------------------------------------------------------------------------------------");
+            try{
+                System.out.println("Student Name : " + sp + "\n");
+                System.out.println("Course Number - Faculty - Score - Course Price\n");
+                for(SeatAssignment seatAssigned : sp.getCourseLoadBySemester("Fall2024").getSeatAssignments()){
+                    CourseOffer co = seatAssigned.getCourseOffer();
+                    System.out.println(co.getCourseNumber() + " - "
+                            + co.getFacultyProfile() + " - "
+                            + Float.toString(seatAssigned.GetCourseStudentScore()) + " - $"
+                            + co.getSubjectCourse().getCoursePrice() + ".00");
+                }
+                Float averageGpa = sp.getCourseLoadBySemester("Fall2024").getSemesterScore()/ sp.getCourseLoadBySemester("Fall2024").getSeatAssignments().size();
+                System.out.println("\nAverage Gpa of " + sp + " : " + Float.toString(averageGpa));
+            }catch(NullPointerException e){
+                System.out.println("Not registered for any courses");
+            }
+            System.out.println("-------------------------------------------------------------------------------------");
+        }
+    
+
+    }
+    
+    private static void assignGrade(CourseLoad cl, String course1, String course2, String grade1, String grade2) {
+    cl.getSeatAssignments().get(0).addGrade(cl.getSeatAssignments().get(0).getCourseOffer().getCourseNumber().equals(course1) ? grade1 : "B-");
+    cl.getSeatAssignments().get(1).addGrade(cl.getSeatAssignments().get(1).getCourseOffer().getCourseNumber().equals(course2) ? grade2 : "B-");
+    }
 
 }
