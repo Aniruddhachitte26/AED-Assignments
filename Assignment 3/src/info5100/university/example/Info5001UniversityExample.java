@@ -56,6 +56,40 @@ public class Info5001UniversityExample {
         Person p18 = pd.newPerson("Debbie");
         Person p19 = pd.newPerson("Amuthen");
         Person p20 = pd.newPerson("Vishal");
+        
+        StudentDirectory sd = department.getStudentDirectory();
+
+        StudentProfile student1 = sd.newStudentProfile(p1);
+        StudentProfile student2 = sd.newStudentProfile(p2);
+        StudentProfile student3 = sd.newStudentProfile(p3);
+        StudentProfile student4 = sd.newStudentProfile(p4);
+        StudentProfile student5 = sd.newStudentProfile(p5);
+        StudentProfile student6 = sd.newStudentProfile(p6);
+        StudentProfile student7 = sd.newStudentProfile(p7);
+        StudentProfile student8 = sd.newStudentProfile(p8);
+        StudentProfile student9 = sd.newStudentProfile(p9);
+        StudentProfile student10 = sd.newStudentProfile(p10);
+
+
+        CourseCatalog coursecatalog = department.getCourseCatalog();
+        Course course = coursecatalog.newCourse("app eng", "info 5100", 1);
+        Course course1 = coursecatalog.newCourse("DMDW", "info 6100", 1);
+        Course course2 = coursecatalog.newCourse("OOD", "CSYE 6200", 1);
+        Course course3 = coursecatalog.newCourse("Data Science", "info 6150", 1);
+        Course course4 = coursecatalog.newCourse("Web Dev", "info 7100", 1);
+        Course course5 = coursecatalog.newCourse("Data Structures", "CS 4500", 1);
+        Course course6 = coursecatalog.newCourse("Program Design Paradigm", "CS 5800", 1);
+        Course course7 = coursecatalog.newCourse("Algorithms", "CS 5001", 1);
+        
+        department.addCoreCourse(course);
+        department.addElectiveCourse(course1);
+        department.addElectiveCourse(course2);
+        department.addElectiveCourse(course3);
+        department.addElectiveCourse(course4);
+        department.addElectiveCourse(course5);
+        department.addElectiveCourse(course6);
+        department.addElectiveCourse(course7);
+
 
 
 }
